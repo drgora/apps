@@ -51,7 +51,7 @@ function all (instanceId: string, api: ApiInterfaceRx): (address: string) => Obs
         api.query.babe.currentSlot(),
         api.derive.chain.bestNumber()
       ]).pipe(
-        map(([result, slot, bestNumber]) => updateSlotOnVesting(result, slot, bestNumber))
+        map(([result, slot, bestNumber]) => updateSlotOnVesting(result, new BN(slot.toString()), bestNumber))
       )
   );
 }
